@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+{% csrf_token %}
+<div class="container p-3">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">musician Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Album Rating</th>
+            <th scope="col">Instrument</th>
+            <th scope="col">Album Name</th>
+            <th scope="col">Release Date</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        {% for album in data %}
+        <tbody>
+          <tr>
+            <th scope="row">{{ album.id }}</th>
+            <td>{{ album.musician_name }}</td>
+            <td>{{ album.musician_name.email }}</td>
+            <td>{{ album.album_rating }}</td>
+            <td>{{ album.musician_name.instrument_type }}</td>
+            <td>{{ album.album_name }}</td>
+            <td>{{ album.album_release_date }}</td>
+            <td>
+              <a href="{% url 'edit_album' album.id %}" class="btn btn-primary">Edit</a>
+              <a href="" class="btn btn-danger">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+        {% endfor %}
+      </table>
+</div>
+
+
+{% endblock %}
